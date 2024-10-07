@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`manifest transform manifest full fixture into key based object 1`] = `
+Object {
+  "chapter-1": Object {
+    "href": "chapter-1.xhtml",
+    "id": "chapter-1",
+    "mediaType": "application/xhtml+xml",
+    "properties": "scripted",
+  },
+  "cover": Object {
+    "href": "cover.xhtml",
+    "id": "cover",
+    "mediaType": "application/xhtml+xml",
+  },
+  "cover-image": Object {
+    "href": "images/cover-image.png",
+    "id": "cover-image",
+    "mediaType": "image/png",
+  },
+  "javascript": Object {
+    "href": "js/book.js",
+    "id": "javascript",
+    "mediaType": "text/javascript",
+  },
+  "ncx": Object {
+    "href": "epb.ncx",
+    "id": "ncx",
+    "mediaType": "application/x-dtbncx+xml",
+  },
+  "stylesheet": Object {
+    "href": "css/book.css",
+    "id": "stylesheet",
+    "mediaType": "text/css",
+  },
+  "toc": Object {
+    "href": "toc.xhtml",
+    "id": "toc",
+    "mediaType": "application/xhtml+xml",
+    "properties": "nav",
+  },
+}
+`;
