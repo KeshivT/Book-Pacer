@@ -71,7 +71,7 @@ const BookView = () => {
         }, 1000);
 
         return () => clearInterval(intervalId);
-    }, [bookId, book]);
+    }, [bookId, book, chapter?.unlockTime]);
 
     const handleUnlock = async () => {
         if (book.lastUnlockedChapter >= book.chapters.length - 1) {
