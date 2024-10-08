@@ -13,6 +13,7 @@ const Signup = () => {
     const [error, setError] = useState(null);
     const [validationError, setValidationError] = useState(null);
     const [success, setSuccess] = useState(null);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const validateForm = () => {
@@ -32,6 +33,7 @@ const Signup = () => {
         setError(null);
         setValidationError(null);
         setSuccess(null);
+        setLoading(true);
 
         if (!validateForm()) {
             return;
@@ -120,9 +122,17 @@ const Signup = () => {
                         className="mr-2"
                     />
                 </div>
-                {validationError && <p className="text-red-500 mb-4">{validationError}</p>}
-                {error && <p className="text-red-500 mb-4">{error}</p>}
-                {success && <p className="text-green-600 mb-4">{success}</p>}
+                <div>
+                    {loading ? (
+                        <p className="text-gray-500">Signing up...</p>
+                    ) : error ? (
+                    <p className="text-red-500 mb-4">{error}</p>
+                    ) : validationError ? (
+                        <p className="text-red-500 mb-4">{validationError}</p>
+                    ) : (
+                        <p className="text-green-600 mb-4">{success}</p>
+                    )}
+                </div>
                 <button
                     type="submit"
                     className="w-full bg-myBlue-400 text-white py-2 rounded-md hover:bg-myBlue-700 transition duration-300 ease-in-out"

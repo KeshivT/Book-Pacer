@@ -75,7 +75,7 @@ const MainPage = () => {
                         <li key={book._id} className="flex justify-between items-center bg-white p-4 rounded-lg shadow-md">
                             <span className="text-lg font-semibold text-purple-600">{book.title}</span>
                             <button
-                                onClick={() => window.location.href = `/book/${book._id}`}
+                                onClick={() => navigate(`/book/${book._id}`)}
                                 className="bg-myPurple-400 text-myBlue-800 font-semibold py-2 px-4 rounded-md hover:bg-myPurple-600 transition duration-300 ease-in-out"
                             >
                                 View Book

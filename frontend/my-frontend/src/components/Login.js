@@ -6,11 +6,13 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
+        setLoading(true);
 
         try {
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`, {
@@ -57,7 +59,15 @@ const Login = () => {
                             className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:border-purple-500"
                         />
                     </div>
-                    {error && <p className="text-red-500 mb-4">{error}</p>}
+                    <div>
+                        {loading ? (
+                            <p className="text-gray-500">Logging in...</p>
+                        ) : error ? (
+                        <p className="text-red-500 mb-4">{error}</p>
+                        ) : (
+                            <p></p>
+                        )}
+                    </div>
                     <button
                         type="submit"
                         className="w-full bg-myPurple-600 text-white py-2 rounded-md hover:bg-myPurple-800 focus:outline-none focus:ring focus:ring-purple-light transition duration-300 ease-in-out"
