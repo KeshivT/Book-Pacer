@@ -25,7 +25,7 @@ const PORT = process.env.PORT || 3000;
 const secretKey = process.env.JWT_SECRET || 'keshivsecretkey';  // Replace with a secure key
 
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3001',
+    origin: process.env.FRONTEND_URL || process.env.REACT_APP_API_URL || 'http://localhost:3001',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
