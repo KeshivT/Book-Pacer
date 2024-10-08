@@ -27,9 +27,15 @@ const secretKey = process.env.JWT_SECRET || 'keshivsecretkey';  // Replace with 
 app.use(cors({
     origin: ['https://bookpacer.com', 'https://bookpacer.netlify.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
+
+app.use((req, res, next) => {
+    res.set('Cache-Control', 'no-store');
+    next();
+})
 
 const users = [];
 const saltRounds = 10;
