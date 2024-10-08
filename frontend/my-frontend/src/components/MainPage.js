@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MainPage = () => {
     const [books, setBooks] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Fetch user's books on component mount
@@ -38,11 +40,11 @@ const MainPage = () => {
 
     const handleUpload = () => {
         // Redirect to the book upload page
-        window.location.href = '/upload';
+        navigate('/upload');
     };
 
     const handleSettings = () => {
-        window.location.href = '/settings';
+        navigate('/settings');
     };
 
     return(
