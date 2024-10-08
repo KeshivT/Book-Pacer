@@ -13,14 +13,14 @@ const ChapterView = () => {
     useEffect(() => {
         const fetchChapter = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/books/${bookId}/chapters/${chapterIndex}`, {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/books/${bookId}/chapters/${chapterIndex}`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
                 });
                 setChapter(response.data);
 
-                const bookResponse = await axios.get(`http://localhost:3000/books/${bookId}`, {
+                const bookResponse = await axios.get(`${process.env.REACT_APP_API_URL}/books/${bookId}`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
@@ -58,7 +58,7 @@ const ChapterView = () => {
         try {
             const token = localStorage.getItem('token');
             await axios.post(
-                'http://localhost:3000/readChapter',
+                `${process.env.REACT_APP_API_URL}/readChapter`,
                 { bookId, index },
                 {
                     headers: {

@@ -16,7 +16,7 @@ const Settings = () => {
     const handleNotificationChange = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.put('http://localhost:3000/user/notification',
+            const response = await axios.put(`${process.env.REACT_APP_API_URL}/user/notification`,
                 { notify },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -30,7 +30,7 @@ const Settings = () => {
     const handleEmailChange = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.put('http://localhost:3000/user/email',
+            const response = await axios.put(`${process.env.REACT_APP_API_URL}/user/email`,
                 { newEmail: email },
                 { headers: { Authorization: `Bearer ${token}` } }
             );

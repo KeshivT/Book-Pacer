@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.baseURL = `${process.env.REACT_APP_API_URL}`;
 
 const Signup = () => {
     const [username, setUsername] = useState('');
@@ -38,7 +38,7 @@ const Signup = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:3000/signup', {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, {
                 username,
                 password,
                 email,
@@ -55,7 +55,7 @@ const Signup = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:3000/login', {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`, {
                 username,
                 password,
             });

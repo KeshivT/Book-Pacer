@@ -10,7 +10,7 @@ const MainPage = () => {
         // Fetch user's books on component mount
         const fetchBooks = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/books', {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/books`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },

@@ -20,7 +20,7 @@ const BookView = () => {
                     setError('User not authenticated');
                     return;
                 }
-                const response = await axios.get(`http://localhost:3000/books/${bookId}`, {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/books/${bookId}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -29,7 +29,7 @@ const BookView = () => {
                 setBook(response.data);
 
                 if (response.data.lastUnlockedChapter !== undefined) {
-                    const chapterResponse = await axios.get(`http://localhost:3000/books/${bookId}/chapters/${(response.data.lastUnlockedChapter + 1)}`, {
+                    const chapterResponse = await axios.get(`${process.env.REACT_APP_API_URL}/books/${bookId}/chapters/${(response.data.lastUnlockedChapter + 1)}`, {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }
@@ -81,7 +81,7 @@ const BookView = () => {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.post(
-                'http://localhost:3000/unlockChapter',
+                `${process.env.REACT_APP_API_URL}/unlockChapter`,
                 { bookId },
                 {
                     headers: {
@@ -96,7 +96,7 @@ const BookView = () => {
             //setCanUnlock(false);
             setBook({ ...book, lastUnlockedChapter: book.lastUnlockedChapter + 1});
 
-            const chapterResponse = await axios.get(`http://localhost:3000/books/${bookId}/chapters/${book.lastUnlockedChapter + 1}`, {
+            const chapterResponse = await axios.get(`${process.env.REACT_APP_API_URL}/books/${bookId}/chapters/${book.lastUnlockedChapter + 1}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -114,7 +114,7 @@ const BookView = () => {
         try {
             const token = localStorage.getItem('token');
             await axios.post(
-                'http://localhost:3000/readChapter',
+                `${process.env.REACT_APP_API_URL}/readChapter`,
                 { bookId, index },
                 {
                     headers: {
