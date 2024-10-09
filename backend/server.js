@@ -21,11 +21,11 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 const secretKey = process.env.JWT_SECRET || 'keshivsecretkey';  // Replace with a secure key
 
 app.use(cors({
-    origin: ['https://bookpacer.com', 'https://bookpacer.netlify.app'],
+    origin: ['https://bookpacer.com', 'https://bookpacer.netlify.app', 'http://localhost:3001'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
